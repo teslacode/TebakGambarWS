@@ -3,6 +3,7 @@ package com.tebakgambar.dao;
 import com.tebakgambar.model.RoomUser;
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -23,17 +24,17 @@ public class RoomUserDao extends Dao {
         System.out.println("INVOKED RoomUserDao.save");
         
         //Open Connection & Begin Transaction
-        this.Open();
-        this.session.beginTransaction();
+        Session session = this.Open();
+        session.beginTransaction();
         //Open Connection & Begin Transaction
         
         //Logic
-        this.session.persist(object);
+        session.persist(object);
         object.getId();
         //Logic
         
         //Close Connection & Commit Transaction
-        this.session.getTransaction().commit();
+        session.getTransaction().commit();
         //Close Connection & Commit Transaction
         
         System.out.println("RETURN RoomUserDao.save: result = " + object.toString());
@@ -51,19 +52,19 @@ public class RoomUserDao extends Dao {
         System.out.println("INVOKED RoomUserDao.searchRoomUser");
         
         //Open Connection & Begin Transaction
-        this.Open();
-        this.session.beginTransaction();
+        Session session = this.Open();
+        session.beginTransaction();
         //Open Connection & Begin Transaction
         
         //Logic
         List<RoomUser> result;
-        Criteria criteria = this.session.createCriteria(RoomUser.class);
+        Criteria criteria = session.createCriteria(RoomUser.class);
         criteria.add(Restrictions.eq("roomId", roomId));
         result = criteria.list();
         //Logic
         
         //Close Connection & Commit Transaction
-        this.session.getTransaction().commit();
+        session.getTransaction().commit();
         //Close Connection & Commit Transaction
         
         System.out.println("RETURN RoomUserDao.searchRoomUser: result " + result.size() + " row");
@@ -82,13 +83,13 @@ public class RoomUserDao extends Dao {
         System.out.println("INVOKED RoomUserDao.searchRoomUser");
         
         //Open Connection & Begin Transaction
-        this.Open();
-        this.session.beginTransaction();
+        Session session = this.Open();
+        session.beginTransaction();
         //Open Connection & Begin Transaction
         
         //Logic
         List<RoomUser> result;
-        Criteria criteria = this.session.createCriteria(RoomUser.class);
+        Criteria criteria = session.createCriteria(RoomUser.class);
         criteria.add(Restrictions.eq("roomId", roomId));
         criteria.add(Restrictions.ne("id", roomUserId));
         criteria.add(Restrictions.eq("deleted", false));
@@ -96,7 +97,7 @@ public class RoomUserDao extends Dao {
         //Logic
         
         //Close Connection & Commit Transaction
-        this.session.getTransaction().commit();
+        session.getTransaction().commit();
         //Close Connection & Commit Transaction
         
         System.out.println("RETURN RoomUserDao.searchRoomUser: result " + result.size() + " row");

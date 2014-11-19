@@ -5,9 +5,12 @@
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/tebakgambar</property>
+    <property name="hibernate.connection.url">jdbc:mysql://127.4.207.130:3306/tebakgambar</property>
+    <property name="hibernate.connection.username">adminuitRV4W</property>
+    <property name="hibernate.connection.password">ZRE7MhS_dUnH</property>
+<!--    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/tebakgambar</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">root</property>
+    <property name="hibernate.connection.password">root</property>-->
     <property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
     <property name="order_inserts">true</property>
     

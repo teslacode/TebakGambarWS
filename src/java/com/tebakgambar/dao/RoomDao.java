@@ -3,6 +3,7 @@ package com.tebakgambar.dao;
 import com.tebakgambar.model.Room;
 import java.util.Date;
 import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -23,17 +24,17 @@ public class RoomDao extends Dao {
         System.out.println("INVOKED RoomDao.save");
 
         //Open Connection & Begin Transaction
-        this.Open();
-        this.session.beginTransaction();
+        Session session = this.Open();
+        session.beginTransaction();
         //Open Connection & Begin Transaction
 
         //Logic
-        this.session.persist(object);
+        session.persist(object);
         object.getId();
         //Logic
 
         //Close Connection & Commit Transaction
-        this.session.getTransaction().commit();
+        session.getTransaction().commit();
         //Close Connection & Commit Transaction
 
         System.out.println("RETURN RoomDao.save: result = " + object.toString());
@@ -51,16 +52,16 @@ public class RoomDao extends Dao {
         System.out.println("INVOKED RoomDao.update");
 
         //Open Connection & Begin Transaction
-        this.Open();
-        this.session.beginTransaction();
+        Session session = this.Open();
+        session.beginTransaction();
         //Open Connection & Begin Transaction
 
         //Logic
-        this.session.update(object);
+        session.update(object);
         //Logic
 
         //Close Connection & Commit Transaction
-        this.session.getTransaction().commit();
+        session.getTransaction().commit();
         //Close Connection & Commit Transaction
 
         System.out.println("RETURN RoomDao.update: result = " + object.toString());
@@ -78,20 +79,20 @@ public class RoomDao extends Dao {
         System.out.println("INVOKED RoomDao.searchRoom");
 
         //Open Connection & Begin Transaction
-        this.Open();
-        this.session.beginTransaction();
+        Session session = this.Open();
+        session.beginTransaction();
         //Open Connection & Begin Transaction
 
         //Logic
         Room result;
-        Criteria criteria = this.session.createCriteria(Room.class);
+        Criteria criteria = session.createCriteria(Room.class);
         criteria.add(Restrictions.lt("totalPlayer", 2));
         criteria.add(Restrictions.eq("temaId", temaId));
         result = (criteria.list().isEmpty() ? null : (Room) criteria.list().get(0));
         //Logic
 
         //Close Connection & Commit Transaction
-        this.session.getTransaction().commit();
+        session.getTransaction().commit();
         //Close Connection & Commit Transaction
 
         //Jika room tidak ketemu buat baru

@@ -30,10 +30,10 @@ public class Soal {
         try {
             this.index = index;
             this.id = id;
-            this.resource = this.getClass().getResource(resource);
-            this.bytes = this.getBytes(this.resource);
+            //this.resource = this.getClass().getResource(resource);
+            //this.bytes = this.getBytes(this.resource);
             this.rfTema = rfTema;
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
@@ -70,7 +70,7 @@ public class Soal {
         this.bytes = bytes;
     }
 
-    private byte[] getBytes(URL resource) throws IOException {
+    public byte[] getBytes(URL resource) throws IOException {
         InputStream in = resource.openStream();
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         byte[] buf = new byte[1024];
