@@ -44,7 +44,7 @@ public class SoalService {
             List<RfSoal> listRfSoal = rfSoalDao.getRandom(temaId);
             int i = 0;
             for (RfSoal rfSoal : listRfSoal) {
-                listSoal.add(new Soal(i++, rfSoal.getId(), rfSoal.getLink(), rfSoal.getRfTema()));
+                listSoal.add(i, new Soal(i++, rfSoal.getId(), rfSoal.getLink(), rfSoal.getRfTema()));
             }
         } catch (Exception e) {
             System.out.println(e.toString());
